@@ -11,9 +11,8 @@
 | last_name_kanji    | string  | null: false               |
 | first_name_kana    | string  | null: false               |
 | last_name_kane     | string  | null: false               |
-| birth_year         | integer | null: false               |
-| birth_month        | integer | null: false               |
-| birth_day          | integer | null: false               |
+| birthday           | Date    | null: false               |
+
 
 ### Asociation
 - has_many: items
@@ -23,18 +22,17 @@
 
 ## itemsテーブル
 
-| column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| name      | text       | null: false                    |
-| text      | text       | null: false                    |
-| category  | string     | null: false                    |
-| condition | string     | null: false                    |
-| delively  | string     | null: false                    |
-| charge    | string     | null: false                    |
-| area      | string     | null: false                    |
-| days      | integer    | null: false                    |
-| price     | integer    | null: false                    |
-| user      | references | null: false, foreign_key: true |
+| column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| text         | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| charge_id    | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| delively_id  | integer    | null: false                    |
+| price        | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### Asociation
 - belongs_to: user
@@ -47,12 +45,11 @@
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
 | item    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
 
 ### Asociation
 - belongs_to: user
-- has_one: item
-- belongs_to: address
+- belongs_to: item
+- has_one: address
 
 
 ## addressテーブル
@@ -60,10 +57,10 @@
 | column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | postal_code   | string  | null: false |
-| prefecture    | string  | null: false |
+| area_id       | integer | null: false |
 | city          | string  | null: false |
 | address       | string  | null: false |
-| building_name | string  | null: false |
+| building_name | string  |             |
 | phone_number  | integer | null: false |
 
 ### Asociation
