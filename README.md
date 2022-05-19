@@ -54,14 +54,15 @@
 
 ## addressテーブル
 
-| column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| postal_code   | string  | null: false |
-| area_id       | integer | null: false |
-| city          | string  | null: false |
-| address       | string  | null: false |
-| building_name | string  |             |
-| phone_number  | string  | null: false |
+| column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| area_id       | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| order_id      | references | null: false, fofeign_key: true |
 
 ### Asociation
 - belongs_to: order
