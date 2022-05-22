@@ -1,24 +1,68 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| encrypted_password | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| first_name_kanji   | string  | null: false               |
+| last_name_kanji    | string  | null: false               |
+| first_name_kana    | string  | null: false               |
+| last_name_kane     | string  | null: false               |
+| birthday           | Date    | null: false               |
 
-* Ruby version
 
-* System dependencies
+### Asociation
+- has_many: items
+- has_many: orders
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## itemsテーブル
 
-* How to run the test suite
+| column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| text         | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| charge_id    | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| delively_id  | integer    | null: false                    |
+| price        | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Asociation
+- belongs_to: user
+- has_one: order
 
-* Deployment instructions
 
-* ...
+## ordersテーブル
+
+| column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+### Asociation
+- belongs_to: user
+- belongs_to: item
+- has_one: address
+
+
+## addressテーブル
+
+| column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| area_id       | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, fofeign_key: true |
+
+### Asociation
+- belongs_to: order
