@@ -8,6 +8,8 @@ validates :charge_id,    presence: true
 validates :area_id,      presence: true
 validates :deliverly_id, presence: true
 validates :price,        presence: true
+validates :image,        presence: true
 
 belongs_to :user
+has_one_attached :image
 end
