@@ -3,6 +3,15 @@ class CreateItems < ActiveRecord::Migration[6.0]
     create_table :items do |t|
 
       t.timestamps
+      t.stiring    :name,         null: false
+      t.text       :text,         null: false
+      t.integer    :category_id,  null: false
+      t.integer    :condition_id, null: false
+      t.integer    :charge_id,    null: false
+      t.integer    :area_id,      null: false
+      t.integer    :deliverly_id, null: false
+      t.integer    :price,        null: false
+      t.references :user,         null: false
     end
   end
 end
