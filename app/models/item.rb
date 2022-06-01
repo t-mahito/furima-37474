@@ -1,8 +1,12 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+
+
 
 validates :name,         presence: true
 validates :text,         presence: true
-validates :category_id,  presence: true
+validates :category_id,  numericality: {other_than: 1 , message: "can't be blank"}
 validates :condition_id, presence: true
 validates :charge_id,    presence: true
 validates :area_id,      presence: true
