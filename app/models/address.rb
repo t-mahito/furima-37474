@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :area_id
+  belongs_to :area
 
   validates :postal_code,  presence: true
   validates :area_id,      numericality: {other_than: 1 , message: "can't be blank"}
@@ -8,6 +8,6 @@ class Address < ApplicationRecord
   validates :address,      presence: true
   validates :phone_number, presence: true
 
-  belongs_to: order
+  belongs_to :order
 
 end
