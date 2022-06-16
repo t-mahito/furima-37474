@@ -9,6 +9,8 @@ class ShoppingForm
    validates :address,     presence: true
    validates :phone_number,presence: true
    validates :token,       presence: true
+   validates :user_id,     presence: true
+   validates :item_id,     presence: true
 
    with_options format: {with: /\A[0-9]{3}-[0-9]{4}\z/} do
     validates :postal_code
