@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @ShoppingForm = ShoppingForm.new
-   
+
     if @item.order.present? || @item.user.id == current_user.id
       redirect_to root_path
     end
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
    end
 
    def find_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
    end
 
    def pay_item
