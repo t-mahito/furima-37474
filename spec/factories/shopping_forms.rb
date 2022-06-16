@@ -7,7 +7,6 @@ FactoryBot.define do
     building_name  {"テスト"}
     phone_number   {"0123456789"}
     token          {Faker::Internet.password(min_length: 20)}
-    user_id        {1}
-    item_id        {1}
+
   end
 end
