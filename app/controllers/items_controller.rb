@@ -29,6 +29,10 @@ class ItemsController < ApplicationController
      redirect_to action: :index
     end
 
+    if @item.order.present?
+      redirect_to action: :index
+    end
+  
   end
 
   def update

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(:item, :a)
+    @item = FactoryBot.build(:item)
   end
 
   describe "アイテム新規出品登録" do
@@ -104,15 +104,15 @@ RSpec.describe Item, type: :model do
      end
 
      it "user_idが存在しないと登録できない" do
-      @item_nouser = FactoryBot.build(:item, :c)
-      @item_nouser.valid?
-      expect(@item_nouser.errors.full_messages).to include "User must exist"
+      @item.user_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "User must exist"
      end
 
      it "imageが存在しないと登録できない" do
-      @item_noimage = FactoryBot.build(:item, :b)
-      @item_noimage.valid?
-      expect(@item_noimage.errors.full_messages).to include "Image can't be blank"
+      @item.image = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Image can't be blank"
      end
     end
   end
